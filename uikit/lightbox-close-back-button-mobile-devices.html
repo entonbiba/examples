@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<title>Close lightbox and modals with backbutton</title>
+<meta name="description" content="Close lightbox and modals - supports back button on android, windows phone and ios devices as well as back button on keyboard">
+<meta name="author" content="@entonbiba - www.entonbiba.com">
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="http://getuikit.com/dist/css/uikit.min.css" />
+<script src="http://getuikit.com/dist/js/uikit.js"></script>
+<script src="http://getuikit.com/dist/js/core/modal.min.js"></script>
+<script src="http://getuikit.com/dist/js/components/lightbox.min.js"></script>
+</head>
+<body>
+
+<h1>Close lightbox and modals with backbutton</h1>
+<h3>supports back button on android, windows phone and ios devices as well as back button on keyboard.</h3>
+
+<a class="uk-button" title="Test lightbox with backbutton" data-uk-lightbox="" href="https://www.gettyimages.ca/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg">Open Lightbox</a>
+
+<small>@entonbiba - www.entonbiba.com</small>
+
+<script>
+// init lightbox element
+var lightbox = $.UIkit.modal('.uk-modal');
+history.pushState(null, null, document.url);
+
+// support back button with keyboard
+$('body').on( 'keyup', function( e ) {
+    if ( e.keyCode === 8 && lightbox ) {
+				$('.uk-modal-close').click();
+    }
+});
+
+// support all back button
+window.addEventListener('popstate', function () {
+		// get modal element    
+		// check if lightbox is active
+    if(lightbox){
+				$('.uk-modal-close').click();
+      	history.pushState(null, null, document.url);
+    } else{
+        // lightbox is not active
+        history.pushState(null, null, document.url);
+    }
+
+});
+</script>
+
+</body>
+</html>
