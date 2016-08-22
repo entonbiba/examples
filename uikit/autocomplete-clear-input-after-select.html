@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<title>UIKIT - Autocomplete - clear input after select</title>
+<meta name="description" content="Autocomplete - clear input after select">
+<meta name="author" content="@entonbiba - www.entonbiba.com">
+
+<link rel="stylesheet" href="http://getuikit.com/dist/css/uikit.min.css" />
+<link rel="stylesheet" href="//getuikit.com/dist/css/components/autocomplete.min.css" />
+
+<style>
+body{
+  margin: 0 auto;
+  padding-top: 10%;
+  text-align: center;
+}
+
+#autocomplete_input{
+  font-size: 2em;
+  height: 50px;
+  width: 500px;
+}
+
+.uk-dropdown{
+  width: 100%!important;
+}
+
+
+ul.selectedBOX{
+    background: #f7f7f7;
+    border: 1px solid #eee;
+    display: inline-block;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 500px;
+}
+
+ul.selectedBOX li{
+    border-bottom: 1px solid #ddd;
+    float: left;
+    font-size: 1.2em;
+    padding: 10px 0px;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<h1>Autocomplete UIKit - </h1>
+<h2>Preview: <a href="http://codepen.io/entonbiba/pen/xONPbr">http://codepen.io/entonbiba/pen/xONPbr</a></h2>
+
+<div id="autocompleteBOX" class="uk-autocomplete uk-form">
+    <input id="autocomplete_input" type="text" placeholder="search by city...">
+    <script type="text/autocomplete">
+        <ul class="uk-nav uk-nav-autocomplete uk-autocomplete-results">
+            {{~items}}
+            <li data-value="{{ $item.value }}">
+                <a>
+                    {{ $item.title }}
+                    <div>{{{ $item.text }}}</div>
+                </a>
+            </li>
+            {{/items}}
+        </ul>
+    </script>
+</div>
+
+<h2>selected items:<h2>
+<ul class="selectedBOX">
+</ul>
+
+<small>@entonbiba - www.entonbiba.com</small>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://getuikit.com/dist/js/uikit.js"></script>
+<script src="//getuikit.com/dist/js/core/dropdown.js"></script>
+<script src="//getuikit.com/dist/js/components/autocomplete.js"></script>
+<script>
+// array of selected values
+var selectedValues = [];
+
+// autocomplete element
+var autocomplete = UIkit.autocomplete('#autocompleteBOX', { source:'http://www.json-generator.com/api/json/get/cjFYaaocgO?indent=2'});
+$('body').on('selectitem.uk.autocomplete', function(e){ 
+
+    // add selected value to array
+    selectedValues.push(
+      {
+        'text':autocomplete.selected[0].attributes[0].value
+      }
+    );
+
+    // append value to selected items html
+    $('.selectedBOX').append('<li>'+autocomplete.selected[0].attributes[0].value+'</li>');
+
+    // clear input textbox
+    setTimeout(function(){
+      $('#autocompleteBOX input#autocomplete_input').val("");
+      $('#autocompleteBOX input#autocomplete_input').attr('value','');
+      $('#autocompleteBOX input#autocomplete_input').focus();
+    }, 100);
+
+});
+</script>
+
+</body>
+</html>
