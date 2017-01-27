@@ -2,7 +2,18 @@
 <html>
 <head>
 <style>
-  .tooltipbg{
+body{
+  background-image: url('https://source.unsplash.com/category/nature');
+	background-position: middle;
+	background-size: 380%;
+  font: 15px helvetica,arial,freesans,clean,sans-serif;
+  margin: 20px auto;    
+  text-align: center;
+}
+#waveform{
+  background: rgba(0,0,0,0.8);
+}
+.tooltipbg{
       position: absolute;
       top: 0;
       left: 0;
@@ -20,6 +31,24 @@
       white-space: nowrap;
       z-index: 1000;
   }
+
+button{
+  background: #eee;
+  border: 1px solid #ddd;
+  border-bottom: 4px solid #ccc;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 10px;
+}
+button:active{
+  outline: none;
+  border-top: 4px solid #eee;
+  border-bottom: 2px solid #777;
+}
+button:focus{
+  outline: none;
+}
 </style>
 
 <title>WaveSurfer.js - show play back time on mouse tooltip</title>
