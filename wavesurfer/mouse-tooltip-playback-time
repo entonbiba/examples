@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .tooltipbg{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+  }
+  .tooltip {
+      position: absolute;
+      display: none;
+      background: #f7f7f7;
+      border: 1px solid #ccc;
+      padding: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 1000;
+  }
+</style>
+
+<title>WaveSurfer.js - show play back time on mouse tooltip</title>
+  
+</head>
+
+<body>
+<div class="tooltipbg"></div>
+<div class="tooltip">00:00</div>
+
+<div id="waveform"></div>
+  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+    <i class="glyphicon glyphicon-play"></i>
+    Play/Pause
+  </button>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+<script>
+var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple'
+});
+wavesurfer.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3');
+function timeformat(timeget) {
+    if (!timeget) {return "00:00";}
+
+    var min = Math.floor(timeget / 60);
+    var sec = Math.ceil(timeget) % 60;
+
+    return (min < 10 ? '0' : '') + min + ":" + (sec < 10 ? '0' : '') + sec;
+};
+
+$('body').on('mousemove','.tooltipbg', function(e) { 
+  if(wavesurfer.isPlaying()){
+    var timeset = timeformat(wavesurfer.getCurrentTime());
+    $('.tooltip').text(timeset).css('left', e.pageX + 5).css('top', e.pageY - 25).css('display', 'block');
+    console.log(wavesurfer.getCurrentTime());
+    console.log(timeset);
+
+  } else{
+    $('.tooltip').text('').css('display', 'none');
+  }
+});
+</script>
+
+</body>
+</html>
