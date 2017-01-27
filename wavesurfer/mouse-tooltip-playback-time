@@ -30,6 +30,7 @@ body{
       overflow: hidden;
       white-space: nowrap;
       z-index: 1000;
+      transition: all 0.1s ease;
   }
 
 button{
