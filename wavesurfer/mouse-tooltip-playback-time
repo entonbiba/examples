@@ -58,10 +58,12 @@ function timeformat(timeget) {
 function mousetooltiptime(e){
     if(wavesurfer.isPlaying()){
     var timeset = timeformat(wavesurfer.getCurrentTime());
-    $('.tooltip').text(timeset).css('left', e.pageX + 5).css('top', e.pageY - 25).css('display', 'block');
-    console.log(wavesurfer.getCurrentTime());
-    console.log(timeset);
 
+    if(e==false){
+      $('.tooltip').text(timeset).css('display', 'block');
+    } else{
+      $('.tooltip').text(timeset).css('left', e.pageX + 5).css('top', e.pageY - 25).css('display', 'block');
+    }
   } else{
     $('.tooltip').text('').css('display', 'none');
   }
