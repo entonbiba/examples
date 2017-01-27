@@ -55,8 +55,8 @@ function timeformat(timeget) {
     return (min < 10 ? '0' : '') + min + ":" + (sec < 10 ? '0' : '') + sec;
 };
 
-$('body').on('mousemove','.tooltipbg', function(e) { 
-  if(wavesurfer.isPlaying()){
+function mousetooltiptime(e){
+    if(wavesurfer.isPlaying()){
     var timeset = timeformat(wavesurfer.getCurrentTime());
     $('.tooltip').text(timeset).css('left', e.pageX + 5).css('top', e.pageY - 25).css('display', 'block');
     console.log(wavesurfer.getCurrentTime());
@@ -65,6 +65,14 @@ $('body').on('mousemove','.tooltipbg', function(e) {
   } else{
     $('.tooltip').text('').css('display', 'none');
   }
+}
+
+$('body').on('mousemove','.tooltipbg', function(e) { 
+    mousetooltiptime();
+});
+
+wavesurfer.on('audioprocess', function () {
+    mousetooltiptime();
 });
 </script>
 
