@@ -28,6 +28,9 @@ button:active{
 button:focus{
   outline: none;
 }
+.volbox{
+  margin-top: 20px;
+}
 </style>
 
 <title>WaveSurfer.js - equalizer with volume slider</title>
@@ -44,18 +47,22 @@ button:focus{
   <a target="_blank" href="https://github.com/entonbiba/examples/blob/master/wavesurfer/equalizer-with-volume-slider">Example reference on github.com</a>
 </h4>
 
+
 <div id="waveform"></div>
 
 <div class="container" style="text-align: center">
-  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+  <button onclick="wavesurfer.playPause()">
     <i class="glyphicon glyphicon-play"></i>
     Play/Pause
   </button>
-
-  <div id="equalizer" style="margin-top: 10px"></div>
   
+  <div class="volbox">
   Volume:
   <input id="volume" type="range" min="0" max="1" value="1" step="0.1">
+  </div>
+  
+  <div id="equalizer" style="margin-top: 10px"></div>
+  
 </div>
 
 
