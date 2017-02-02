@@ -37,7 +37,7 @@ button:focus{
 <body>
 <h1>WaveSurfer.js - rounded waveform bars design</h1>
 <h4>
-  <a target="_blank" href="https://github.com/entonbiba/examples/blob/master/wavesurfer/rounded- waveform-bars-design">Example reference on github.com</a>
+  <a target="_blank" href="https://github.com/entonbiba/examples/blob/master/wavesurfer/rounded-waveform-bars-design">Example reference on github.com</a>
 </h4>
 
 <div id="waveform"></div>
