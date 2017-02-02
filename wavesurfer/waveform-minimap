@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  font: 15px helvetica,arial,freesans,clean,sans-serif;
+  margin: 20px auto;    
+  text-align: center;
+}
+#waveform{
+  background: rgba(0,0,0,0.8);
+}
+
+button{
+  background: #eee;
+  border: 1px solid #ddd;
+  border-bottom: 4px solid #ccc;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 10px;
+}
+button:active{
+  outline: none;
+  border-top: 4px solid #eee;
+  border-bottom: 2px solid #777;
+}
+button:focus{
+  outline: none;
+}
+</style>
+
+<title>WaveSurfer.js - show play back time on mouse tooltip</title>
+  
+</head>
+
+<body>
+<h1>WaveSurfer.js - waveform minimap</h1>
+<h4>
+  <a target="_blank" href="https://github.com/entonbiba/examples/blob/master/wavesurfer/waveform-minimap">Example reference on github.com</a>
+</h4>
+
+<div id="waveform"></div>
+<div id="minimap"></div>
+  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+    <i class="glyphicon glyphicon-play"></i>
+    Play/Pause
+  </button>
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- create pull request for feature -->
+<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>-->
+<script src="http://www.code.to/test.js"></script>
+
+<script>
+var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: '#D2EDD4',
+    progressColor: '#46B54D',
+    minPxPerSec: 1
+});
+
+var minimap1;
+wavesurfer.on('ready', function () {
+         minimap1 = null;
+         var minimap1 = wavesurfer.initMinimap({
+             container: document.querySelector('#minimap'),
+             height: 30,
+             waveColor: '#ddd',
+             progressColor: '#999',
+             cursorColor: '#68A93D'
+         });
+});
+
+wavesurfer.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3');
+
+</script>
+
+</body>
+</html>
