@@ -53,7 +53,7 @@ button:focus{
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- create pull request for feature -->
 <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>-->
-<script src="http://www.code.to/test.js"></script>
+<script src="http://www.code.to/minimap.js"></script>
 
 <script>
 var wavesurfer = WaveSurfer.create({
