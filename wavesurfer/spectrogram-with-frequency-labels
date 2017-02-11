@@ -47,7 +47,7 @@ button:focus{
 
 <h1>WaveSurfer.js - spectrogram with frequency labels</h1>
 <h4>
-  <a target="_blank" href="https://github.com/entonbiba/examples/blob/master/wavesurfer/spectrogram-with-frequency-labels">Example reference on github.com</a>
+  <a target="_blank" href="https://github.com/entonbiba/wavesurfer-spectrogram-with-frequency-labels">Example reference on github.com</a>
 </h4>
 
 <div id="waveform"></div>
