@@ -14,9 +14,10 @@ body{
 }
 #wave-spectrogram{
   margin: 10px auto;
+  position: relative;
 }
 #wave-spectrogram canvas{
-left: 0;
+  left: 0;
 }
 
 button{
@@ -50,12 +51,13 @@ button:focus{
 </h4>
 
 <div id="waveform"></div>
+
 <div id="wave-spectrogram"></div>
 
-  <button class="btn btn-primary" onclick="wavesurfer.playPause()">
-    <i class="glyphicon glyphicon-play"></i>
-    Play/Pause
-  </button>
+<button class="btn btn-primary" onclick="wavesurfer.playPause()">
+  <i class="glyphicon glyphicon-play"></i>
+  Play/Pause
+</button>
 
 <script>
 var wavesurfer = WaveSurfer.create({
@@ -65,34 +67,13 @@ var wavesurfer = WaveSurfer.create({
 });
 
 wavesurfer.on('ready', function () {
-        var spectrogram = Object.create(WaveSurfer.Spectrogram);
-
-    spectrogram.init({
-        wavesurfer: wavesurfer,
-        container: "#wave-spectrogram",
-        fftSamples: 1024
-    });
-  
-    var frequencies = spectrogram.height;
-    //console.log(frequencies);
-    var c = $("#wave-spectrogram  canvas")[0].getContext('2d');         
-    var getMaxY = frequencies;
-        c.fillStyle = '#444';        
-        c.fillRect(0,0,40,getMaxY);
-        c.fill();
-
-      for(var i = 0; i < getMaxY; i += 100) {
-        c.font="14px Helvetica";
-        c.textAlign="center"; 
-        c.textBaseline = "middle";
-        c.fillStyle = '#fff';        
-        if(i==0){
-          c.fillText(i, 20, getMaxY-i-10);
-        } else{
-          c.fillText(i, 20, getMaxY-i);
-        }
-      }
-  
+  var spectrogram = Object.create(WaveSurfer.Spectrogram);
+  spectrogram.init({
+    wavesurfer: wavesurfer,
+    container: "#wave-spectrogram",
+    fftSamples: 1024,
+    labels: true
+  });
 });
 
 wavesurfer.load('http://wavesurfer-js.org/example/media/demo.wav');
